@@ -7,6 +7,14 @@ where continent <> ''
 --Group By date
 order by 1,2
 
+Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
+From CovidDeaths
+--Where location like '%states%'
+Where continent = ''
+and location not in ('World', 'European Union', 'International')
+Group by location
+order by TotalDeathCount desc
+
 
 Select location, SUM(cast(new_deaths as int)) as TotalDeathCount
 From CovidDeaths
